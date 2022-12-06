@@ -6,6 +6,7 @@ Created on Sun Nov 27 10:23:02 2022
 """
 from qiskit import *
 from qiskit.tools.monitor import job_monitor
+from numpy import pi
 
 
 #class experiments contains the real and simulated experiments of a real quantum computer
@@ -37,7 +38,6 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.x(qr[0])
         circuit.measure(qr,cr)
         simulator=Aer.get_backend("qasm_simulator")
         result=execute(circuit,backend=simulator,shots=self.shots).result()
@@ -49,7 +49,7 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.y(qr[0])
+        circuit.h(qr[0])
         circuit.measure(qr,cr)
         simulator=Aer.get_backend("qasm_simulator")
         result=execute(circuit,backend=simulator,shots=self.shots).result()
@@ -61,7 +61,7 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.z(qr[0])
+        circuit.u(pi / 2, 0, pi / 2, qr[0])
         circuit.measure(qr,cr)
         simulator=Aer.get_backend("qasm_simulator")
         result=execute(circuit,backend=simulator,shots=self.shots).result()
@@ -73,7 +73,6 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.x(qr[0])
         circuit.measure(qr,cr)
         
         IBMQ.load_account()
@@ -90,7 +89,7 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.y(qr[0])
+        circuit.h(qr[0])
         circuit.measure(qr,cr)
         
         IBMQ.load_account()
@@ -107,7 +106,7 @@ class experiments():
         circuit=QuantumCircuit(qr,cr)
         circuit.h(qr[0])
         circuit.barrier(qr[0])
-        circuit.z(qr[0])
+        circuit.u(pi / 2, 0, pi / 2, qr[0])
         circuit.measure(qr,cr)
         
         IBMQ.load_account()
@@ -120,14 +119,15 @@ class experiments():
 
 
 #NB class mumbers are dictionaries so you must input "0" and "1" to get the associated count
-ex1=experiments(50,1,1)
+ex1=experiments(50,1,0)
 print(ex1.Xsimulated)
 print(ex1.Ysimulated)
 print(ex1.Zsimulated)
+"""
 print(ex1.Xreal)
 print(ex1.Yreal)
 print(ex1.Zreal)
-
+"""
 
 
 
