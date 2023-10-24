@@ -3,9 +3,9 @@
 Open issues for:
 - Restructure the repo
 - Fix notebook problems
-- Create and organize .py files
+- Create and organize .py files ✅
 - Set poetry
-- Linter and correct style
+- Linter and correct style ✅
 
 # Bayesian Methods for Quantum Tomography
 
